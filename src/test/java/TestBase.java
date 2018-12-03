@@ -16,7 +16,6 @@ class TestBase {
 
     TestBase(WebDriver driver) {
         this.driver = driver;
-        //driver.manage().timeouts().implicitlyWait(TIMEOUT, TimeUnit.SECONDS);
         driver.manage().window().setSize(WINDOW_SIZE);
     }
 

@@ -8,6 +8,7 @@ import pages.WithdrawalPage;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static utils.Config.*;
+import static utils.Utils.getRandomInt;
 
 public class VoucherRedemptionTest extends TestBase {
     public VoucherRedemptionTest(WebDriver driver) {
@@ -15,7 +16,7 @@ public class VoucherRedemptionTest extends TestBase {
     }
 
     float initialBalanceOfCreator;
-    int amount = 50;
+    int amount;
     String voucherNumber;
 
     @BeforeEach
@@ -24,6 +25,7 @@ public class VoucherRedemptionTest extends TestBase {
         initialBalanceOfCreator = mainPage.getBalance();
         WithdrawalPage wp = mainPage.openWithdrawalPage();
         wp.switchToVoucherTab();
+        amount = getRandomInt(1, 100);
         wp.withdrawToVoucher(amount);
         voucherNumber = wp.getNewVoucherInfoFromNotification().getNumber();
     }
@@ -67,6 +69,5 @@ public class VoucherRedemptionTest extends TestBase {
                 () -> assertFalse(vp.isActivationSuccessful(), "there is an error notification"),
                 () -> assertEquals(initialReceiverBalance, resultReceiverBalance, DELTA),
                 () -> assertEquals(expectedMessage, vp.getNotificationText()));
-        // statement
     }
 }

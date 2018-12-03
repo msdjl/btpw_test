@@ -9,6 +9,7 @@ import pages.WithdrawalPage;
 import static org.junit.jupiter.api.Assertions.*;
 import static utils.Config.UGANDAN_WITH_BALANCE;
 import static utils.Config.UGANDA_URL;
+import static utils.Utils.getRandomInt;
 
 class WithdrawalTest extends TestBase {
     public WithdrawalTest(WebDriver driver) {
@@ -23,7 +24,7 @@ class WithdrawalTest extends TestBase {
     @Test
     @DisplayName("Successful withdrawal to voucher")
     void successfulWithdrawalToVoucher() {
-        int amount = 10;
+        int amount = getRandomInt(1, 100);
         float balance = mainPage.getBalance();
         WithdrawalPage wp = mainPage.openWithdrawalPage();
         wp.switchToVoucherTab();
@@ -49,7 +50,7 @@ class WithdrawalTest extends TestBase {
     @DisplayName("Failed withdrawal to voucher in case insufficient balance")
     void failedWithdrawalToVoucherInCaseInsufficientBalance() {
         float balance = mainPage.getBalance();
-        int amount = (int)balance + 10;
+        int amount = (int)balance + 1;
         WithdrawalPage wp = mainPage.openWithdrawalPage();
         wp.switchToVoucherTab();
         wp.withdrawToVoucher(amount);
