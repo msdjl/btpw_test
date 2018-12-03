@@ -1,0 +1,16 @@
+sel.jup.default.browser=chrome
+
+window.width=1024
+window.height=600
+
+timeoutInSeconds=10
+
+uganda.url=http://example.com
+uganda.userWithBalance.phone=+256111111111
+uganda.userWithBalance.password=123456
+uganda.userWithoutBalance.phone=+256111111123
+uganda.userWithoutBalance.password=123456
+
+kenya.url=http://example.com
+kenya.userWithoutBalance.phone=+254111111111
+kenya.userWithoutBalance.password=123456
