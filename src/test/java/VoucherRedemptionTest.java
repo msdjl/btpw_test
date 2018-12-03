@@ -9,8 +9,8 @@ import pages.WithdrawalPage;
 import static org.junit.jupiter.api.Assertions.*;
 import static utils.Config.*;
 
-public class VoucherRedemption extends TestBase {
-    public VoucherRedemption(WebDriver driver) {
+public class VoucherRedemptionTest extends TestBase {
+    public VoucherRedemptionTest(WebDriver driver) {
         super(driver);
     }
 
