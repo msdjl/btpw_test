@@ -1,7 +1,7 @@
 sel.jup.default.browser=chrome
 
-window.width=1024
-window.height=600
+window.width=1920
+window.height=1080
 
 timeoutInSeconds=10
 

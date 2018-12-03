@@ -8,11 +8,9 @@ import static utils.Config.WINDOW_SIZE;
 
 @ExtendWith(SeleniumExtension.class)
 class TestBase {
-    final double DELTA = 0.001;
+    final double DELTA = 0.01;
     WebDriver driver;
     MainPage mainPage;
-
-    private TestBase() {}
 
     TestBase(WebDriver driver) {
         this.driver = driver;

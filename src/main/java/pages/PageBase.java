@@ -2,37 +2,19 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
 
-import static utils.Config.TIMEOUT;
-import static utils.Utils.getFloat;
-
-public class PageBase {
-    WebDriver driver;
-    WebDriverWait wait;
-
+public class PageBase extends Element {
     private final String MENU_SELECTOR = "#Main-Menu-Button";
-
-    private PageBase() {}
+    private RightSidePanel rightSidePanel;
 
     public PageBase(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, TIMEOUT);
+        super(driver);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(MENU_SELECTOR)));
-    }
-
-    WebElement $(String selector) {
-        return driver.findElement(By.cssSelector(selector));
-    }
-
-    List<WebElement> $$(String selector) {
-        return driver.findElements(By.cssSelector(selector));
+        rightSidePanel = new RightSidePanel(driver);
     }
 
     void openHeaderMenu() {
@@ -68,11 +50,20 @@ public class PageBase {
         return new VoucherPage(driver);
     }
 
-    boolean isLoggedIn() {
-        return $$("#join-now-link").isEmpty();
+    public UpcomingEventsPage openUpcomingEventsPage() {
+        $("#left-side-sports ul.nav").findElement(By.partialLinkText("NEXT 48 HOURS")).click();
+        return new UpcomingEventsPage(driver);
+    }
+
+    public boolean isLoggedIn() {
+        return rightSidePanel.isLoggedIn();
     }
 
     public float getBalance() {
-        return getFloat($(".balance .count").getText());
+        return rightSidePanel.getBalance();
+    }
+
+    public RightSidePanel getRightSidePanel() {
+        return rightSidePanel;
     }
 }
