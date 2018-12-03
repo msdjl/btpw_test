@@ -15,7 +15,7 @@ public class VoucherRedemptionTest extends TestBase {
         super(driver);
     }
 
-    float initialBalanceOfCreator;
+    double initialBalanceOfCreator;
     int amount;
     String voucherNumber;
 
@@ -33,14 +33,14 @@ public class VoucherRedemptionTest extends TestBase {
     @Test
     @DisplayName("Successful voucher redemption")
     void successfulVoucherRedemption() {
-        float resultBalanceOfCreator = mainPage.getBalance();
+        double resultBalanceOfCreator = mainPage.getBalance();
 
         clearCookies();
         openAndLogin(UGANDA_URL, UGANDAN_WITHOUT_BALANCE);
-        float initialReceiverBalance = mainPage.getBalance();
+        double initialReceiverBalance = mainPage.getBalance();
         VoucherPage vp = mainPage.openVoucherPage();
         vp.activate(voucherNumber);
-        float resultReceiverBalance = mainPage.getBalance();
+        double resultReceiverBalance = mainPage.getBalance();
 
         assertEquals(initialBalanceOfCreator - amount, resultBalanceOfCreator, DELTA);
         assertAll("voucher is activated",
@@ -59,10 +59,10 @@ public class VoucherRedemptionTest extends TestBase {
     void failedVoucherRedemptionInCaseInvalidCurrency() {
         clearCookies();
         openAndLogin(KENYA_URL, KENYAN_WITHOUT_BALANCE);
-        float initialReceiverBalance = mainPage.getBalance();
+        double initialReceiverBalance = mainPage.getBalance();
         VoucherPage vp = mainPage.openVoucherPage();
         vp.activate(voucherNumber);
-        float resultReceiverBalance = mainPage.getBalance();
+        double resultReceiverBalance = mainPage.getBalance();
 
         String expectedMessage = "The voucher is in UGX. You are only allowed to deposit vouchers in KES.";
         assertAll("voucher isn't activated",

@@ -12,7 +12,7 @@ import static utils.Utils.getRandomInt;
 
 public class BetsTest extends TestBase {
     int amount;
-    float initialBalance;
+    double initialBalance;
     RightSidePanel panel;
 
     public BetsTest(WebDriver driver) {
@@ -41,12 +41,12 @@ public class BetsTest extends TestBase {
         mainPage.openUpcomingEventsPage().clickFirstXSelections(5);
         panel.setStake(amount);
 
-        float odds = panel.getOdds();
-        float potentialWinnings = panel.getPotentialWinnings();
-        float bonus = panel.getBonus();
-        float payout = panel.getPayout();
+        double odds = panel.getOdds();
+        double potentialWinnings = panel.getPotentialWinnings();
+        double bonus = panel.getBonus();
+        double payout = panel.getPayout();
 
-        float bigDelta = 1; // because, as I can see, there is a difference between real and displayed odds: https://imgur.com/a/PlZ7DnV
+        double bigDelta = 1; // because, as I can see, there is a difference between real and displayed odds: https://imgur.com/a/PlZ7DnV
         assertAll("bonus and payout are calculated right",
                 () -> assertEquals(odds * amount, potentialWinnings, bigDelta, "potential winnings value is correct"),
                 () -> assertEquals(potentialWinnings * 0.1, bonus, DELTA, "bonus value is correct"),
@@ -57,7 +57,7 @@ public class BetsTest extends TestBase {
 
     void placeBetAndCheckResults() {
         panel.placeBet();
-        float resultBalance = mainPage.getBalance();
+        double resultBalance = mainPage.getBalance();
         assertAll("the bet is placed",
                 () -> assertTrue(panel.isPlacementSuccessful(), "there is a success notification"),
                 () -> assertEquals(initialBalance - amount, resultBalance, DELTA));

@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static java.lang.Integer.parseInt;
-import static utils.Utils.getFloat;
+import static utils.Utils.getDouble;
 import static utils.Utils.sleep;
 
 public class WithdrawalPage extends PageBase {
@@ -56,7 +56,7 @@ public class WithdrawalPage extends PageBase {
         WebElement row = $(".pending-reques .row-bottomline");
         List<WebElement> cells = row.findElements(By.cssSelector(".cell"));
         voucher.setNumber(cells.get(1).getText());
-        voucher.setAmount(getFloat(cells.get(2).getText()));
+        voucher.setAmount(getDouble(cells.get(2).getText()));
         return voucher;
     }
 

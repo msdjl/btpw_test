@@ -59,7 +59,7 @@ public class PageBase extends Element {
         return rightSidePanel.isLoggedIn();
     }
 
-    public float getBalance() {
+    public double getBalance() {
         return rightSidePanel.getBalance();
     }
 

@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static utils.Utils.getFloat;
+import static utils.Utils.getDouble;
 import static utils.Utils.sleep;
 
 public class RightSidePanel extends Element {
@@ -19,8 +19,8 @@ public class RightSidePanel extends Element {
         return $$("#join-now-link").isEmpty();
     }
 
-    public float getBalance() {
-        return getFloat($(PANEL_SELECTOR + " .balance .count").getText());
+    public double getBalance() {
+        return getDouble($(PANEL_SELECTOR + " .balance .count").getText());
     }
 
     public void setStake(int amount) {
@@ -33,20 +33,20 @@ public class RightSidePanel extends Element {
         sleep(1000);
     }
 
-    public float getOdds() {
-        return getFloat($("#Bp-Total-Odds b").getText());
+    public double getOdds() {
+        return getDouble($("#Bp-Total-Odds b").getText());
     }
 
-    public float getPotentialWinnings() {
-        return getFloat($("#Bp-Total-Winnings b").getText());
+    public double getPotentialWinnings() {
+        return getDouble($("#Bp-Total-Winnings b").getText());
     }
 
-    public float getBonus() {
-        return getFloat($("#Bp-Bonus-Win-Amount b").getText());
+    public double getBonus() {
+        return getDouble($("#Bp-Bonus-Win-Amount b").getText());
     }
 
-    public float getPayout() {
-        return getFloat($("#Bp-Total-Win-Amount b").getText());
+    public double getPayout() {
+        return getDouble($("#Bp-Total-Win-Amount b").getText());
     }
 
     public boolean isPlacementSuccessful() {

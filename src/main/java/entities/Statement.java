@@ -1,31 +1,31 @@
 package entities;
 
 public class Statement {
-    private float change;
-    private float balance;
+    private double change;
+    private double balance;
 
     public Statement() {
 
     }
 
-    public Statement(float change, float balance) {
+    public Statement(double change, double balance) {
         this.change = change;
         this.balance = balance;
     }
 
-    public float getChange() {
+    public double getChange() {
         return change;
     }
 
-    public void setChange(float change) {
+    public void setChange(double change) {
         this.change = change;
     }
 
-    public float getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(float balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 }

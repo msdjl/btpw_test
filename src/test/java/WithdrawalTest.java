@@ -25,11 +25,11 @@ class WithdrawalTest extends TestBase {
     @DisplayName("Successful withdrawal to voucher")
     void successfulWithdrawalToVoucher() {
         int amount = getRandomInt(1, 100);
-        float balance = mainPage.getBalance();
+        double balance = mainPage.getBalance();
         WithdrawalPage wp = mainPage.openWithdrawalPage();
         wp.switchToVoucherTab();
         wp.withdrawToVoucher(amount);
-        float resultBalance = mainPage.getBalance();
+        double resultBalance = mainPage.getBalance();
         Voucher voucherInfoFromNotification = wp.getNewVoucherInfoFromNotification();
         Voucher voucherInfoFromStatement = wp.getNewVoucherInfoFromStatement();
 
@@ -49,7 +49,7 @@ class WithdrawalTest extends TestBase {
     @Test
     @DisplayName("Failed withdrawal to voucher in case insufficient balance")
     void failedWithdrawalToVoucherInCaseInsufficientBalance() {
-        float balance = mainPage.getBalance();
+        double balance = mainPage.getBalance();
         int amount = (int)balance + 1;
         WithdrawalPage wp = mainPage.openWithdrawalPage();
         wp.switchToVoucherTab();
@@ -65,7 +65,7 @@ class WithdrawalTest extends TestBase {
     @Test
     @DisplayName("Failed withdrawal in case invalid amount")
     void failedWithdrawalToVoucherInCaseInvalidAmount() {
-        float balance = mainPage.getBalance();
+        double balance = mainPage.getBalance();
         int amount = 0;
         WithdrawalPage wp = mainPage.openWithdrawalPage();
         wp.switchToVoucherTab();

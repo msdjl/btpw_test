@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
-import static utils.Utils.getFloat;
+import static utils.Utils.getDouble;
 
 public class StatementsPage extends PageBase {
     private final String SPINNER_SELECTOR = ".bp-spinner";
@@ -23,8 +23,8 @@ public class StatementsPage extends PageBase {
         Statement statement = new Statement();
         WebElement row = $("table.statement tbody tr");
         List<WebElement> cells = row.findElements(By.cssSelector("td"));
-        statement.setChange(getFloat(cells.get(2).getText()));
-        statement.setBalance(getFloat(cells.get(3).getText()));
+        statement.setChange(getDouble(cells.get(2).getText()));
+        statement.setBalance(getDouble(cells.get(3).getText()));
         return statement;
     }
 }

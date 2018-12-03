@@ -1,7 +1,7 @@
 package entities;
 
 public class Voucher {
-    private float amount;
+    private double amount;
     private String currency;
     private String number;
 
@@ -19,11 +19,11 @@ public class Voucher {
         this.currency = currency;
     }
 
-    public float getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

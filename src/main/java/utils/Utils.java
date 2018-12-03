@@ -5,11 +5,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Utils {
-    public static float getFloat(String str) {
+    public static double getDouble(String str) {
         Pattern pattern = Pattern.compile("-?\\d+(?:\\.\\d+)?");
         Matcher matcher = pattern.matcher(str.replaceAll(" ", ""));
         if(matcher.find()){
-            return Float.valueOf(matcher.group());
+            return Double.valueOf(matcher.group());
         }
         return 0;
     }
