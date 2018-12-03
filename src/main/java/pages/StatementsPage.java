@@ -11,10 +11,12 @@ import java.util.List;
 import static utils.Utils.getFloat;
 
 public class StatementsPage extends PageBase {
+    private final String SPINNER_SELECTOR = ".bp-spinner";
+
     public StatementsPage(WebDriver driver) {
         super(driver);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".bp-spinner")));
-        wait.until(ExpectedConditions.invisibilityOf($(".bp-spinner")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(SPINNER_SELECTOR)));
+        wait.until(ExpectedConditions.invisibilityOf($(SPINNER_SELECTOR)));
     }
 
     public Statement getLastStatement() {

@@ -5,21 +5,22 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static java.lang.Integer.parseInt;
-import static utils.Config.TIMEOUT;
 import static utils.Utils.getFloat;
 import static utils.Utils.sleep;
 
 public class WithdrawalPage extends PageBase {
+    private final String PAYOUT_PANEL_SELECTOR = "#Payout-Request-Panel";
+    private final String NOTIFICATION_SELECTOR = PAYOUT_PANEL_SELECTOR + " .notify";
+
     public WithdrawalPage(WebDriver driver) {
         super(driver);
-        (new WebDriverWait(driver, TIMEOUT)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#Payout-Request-Panel")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(PAYOUT_PANEL_SELECTOR)));
     }
 
     public void switchToVoucherTab() {
@@ -34,7 +35,7 @@ public class WithdrawalPage extends PageBase {
     }
 
     public String getNotificationText() {
-        return $("#Payout-Request-Panel .notify").getText();
+        return $(NOTIFICATION_SELECTOR).getText();
     }
 
     public Voucher getNewVoucherInfoFromNotification() {
@@ -60,10 +61,10 @@ public class WithdrawalPage extends PageBase {
     }
 
     public boolean isWithdrawalFinished() {
-        return !$$("#Payout-Request-Panel .notify:not(.hidden)").isEmpty();
+        return !$$(NOTIFICATION_SELECTOR + ":not(.hidden)").isEmpty();
     }
 
     public boolean isWithdrawalSuccessful() {
-        return !$$("#Payout-Request-Panel .notify.success").isEmpty();
+        return !$$(NOTIFICATION_SELECTOR + ".success").isEmpty();
     }
 }

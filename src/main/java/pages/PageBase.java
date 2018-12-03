@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URI;
@@ -16,11 +17,14 @@ public class PageBase {
     WebDriver driver;
     WebDriverWait wait;
 
+    private final String MENU_SELECTOR = "#Main-Menu-Button";
+
     private PageBase() {}
 
     public PageBase(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, TIMEOUT);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(MENU_SELECTOR)));
     }
 
     WebElement $(String selector) {
@@ -32,7 +36,7 @@ public class PageBase {
     }
 
     void openHeaderMenu() {
-        $("#Main-Menu-Button").click();
+        $(MENU_SELECTOR).click();
     }
 
     public LoginPage openLoginPage() {
